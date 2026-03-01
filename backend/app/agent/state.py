@@ -72,7 +72,7 @@ class AgentState(BaseModel):
     # ---------------------
     correction_triggered: bool = False
     corrected_answer: Optional[str] = None
-
+    correction_attempts: int = 0
     # ---------------------
     # Final Output
     # ---------------------

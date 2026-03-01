@@ -1,0 +1,38 @@
+[
+  { "question": "What does Article 143 state?", "expected_article": "143", "expected_not_found": false },
+  { "question": "What does Article 10 state?", "expected_article": "10", "expected_not_found": false },
+  { "question": "What does Article 13 establish?", "expected_article": "13", "expected_not_found": false },
+  { "question": "What does Article 31 guarantee?", "expected_article": "31", "expected_not_found": false },
+  { "question": "What does Article 42 provide regarding property?", "expected_article": "42", "expected_not_found": false },
+  { "question": "Explain Article 25.", "expected_article": "25", "expected_not_found": false },
+  { "question": "What powers are described in Article 144?", "expected_article": "144", "expected_not_found": false },
+  { "question": "What does Article 149 discuss?", "expected_article": "149", "expected_not_found": false },
+  { "question": "What is stated in Article 59?", "expected_article": "59", "expected_not_found": false },
+  { "question": "Does Article 999 exist?", "expected_article": null, "expected_not_found": true },
+
+  { "question": "Does Article 200 exist in the Constitution?", "expected_article": null, "expected_not_found": true },
+  { "question": "What does Article 500 state?", "expected_article": null, "expected_not_found": true },
+  { "question": "Is there an Article 0 in the Constitution?", "expected_article": null, "expected_not_found": true },
+
+  { "question": "Does Article 143 establish a socialist command economy?", "expected_article": "143", "expected_not_found": false },
+  { "question": "Does Article 143 prohibit private ownership of minerals?", "expected_article": "143", "expected_not_found": false },
+  { "question": "Does Article 10 require complete nationalization of all industries?", "expected_article": "10", "expected_not_found": false },
+  { "question": "Does Article 42 allow property acquisition without compensation?", "expected_article": "42", "expected_not_found": false },
+  { "question": "Does Article 31 allow arbitrary deprivation of liberty?", "expected_article": "31", "expected_not_found": false },
+
+  { "question": "Critically analyze the economic implications of Article 143.", "expected_article": "143", "expected_not_found": false },
+  { "question": "Analyze whether Article 13 eliminates private ownership.", "expected_article": "13", "expected_not_found": false },
+  { "question": "Does Article 143 give Parliament unlimited authority over economic resources?", "expected_article": "143", "expected_not_found": false },
+  { "question": "Does Article 25 allow Bangladesh to interfere in foreign sovereignty?", "expected_article": "25", "expected_not_found": false },
+
+  { "question": "Compare Article 10 and Article 13 regarding ownership.", "expected_article": "10", "expected_not_found": false },
+  { "question": "How does Article 42 relate to Article 143?", "expected_article": "42", "expected_not_found": false },
+  { "question": "Is Article 143 connected to Article 13?", "expected_article": "143", "expected_not_found": false },
+
+  { "question": "Does Article 143 guarantee economic equality?", "expected_article": "143", "expected_not_found": false },
+  { "question": "Does Article 13 establish a purely capitalist system?", "expected_article": "13", "expected_not_found": false },
+  { "question": "Does Article 31 override Article 42?", "expected_article": "31", "expected_not_found": false },
+
+  { "question": "What constitutional provision governs contracts and deeds?", "expected_article": "145", "expected_not_found": false },
+  { "question": "Does Article 145 apply to international treaties?", "expected_article": "145", "expected_not_found": false }
+]
