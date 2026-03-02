@@ -4,16 +4,15 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_community.retrievers import BM25Retriever
 from langchain_classic.retrievers.ensemble import EnsembleRetriever
+from langchain_huggingface import HuggingFaceEndpointEmbeddings
 INDEX_PATH = "backend/data/processed_chunks/faiss_index"
 
 
 class ConstitutionRetriever:
     def __init__(self):
 
-        embeddings = HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2",
-            model_kwargs={"device": "cpu"},
-            encode_kwargs={"normalize_embeddings": True}
+        embeddings = HuggingFaceEndpointEmbeddings(
+            repo_id="sentence-transformers/all-MiniLM-L6-v2",
         )
 
         # Load persistent FAISS

@@ -5,7 +5,7 @@ import json
 import os
 
 from langchain_core.documents import Document
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEndpointEmbeddings
 from langchain_community.vectorstores import FAISS
 
 
@@ -52,10 +52,8 @@ Section: {entry.get("section_no_en")}
     if not documents:
         raise ValueError("No documents found. Check JSON path.")
 
-    embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2",
-        model_kwargs={"device": "cpu"},
-        encode_kwargs={"normalize_embeddings": True}
+    embeddings = HuggingFaceEndpointEmbeddings(
+        repo_id="sentence-transformers/all-MiniLM-L6-v2",
     )
 
     print("Building FAISS index...")
