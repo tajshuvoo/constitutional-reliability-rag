@@ -37,20 +37,27 @@ def generate_node(state: AgentState) -> AgentState:
 
     result = llm.invoke(
         [
-            SystemMessage(content="You are a Bangladesh constitutional legal assistant."),
+            SystemMessage(
+                content=(
+                    "You are a constitutional text summarizer. "
+                    "You must strictly restate constitutional provisions."
+                )
+            ),
             HumanMessage(
                 content=(
                     "You are answering a constitutional legal question.\n\n"
-                    "STRICT RULES:\n"
-                    "1. You MUST answer only from the provided articles.\n"
-                    "2. Every factual claim MUST include a citation in this exact format: (Article NUMBER).\n"
-                    "3. Citation must be inside parentheses.\n"
-                    "4. If the answer is not found, respond exactly with:\n"
+                    "STRICT GENERATION RULES:\n"
+                    "1. Only restate what is explicitly written in the provided articles.\n"
+                    "2. Do NOT infer implications.\n"
+                    "3. Do NOT analyze economic or political consequences.\n"
+                    "4. Do NOT add interpretation.\n"
+                    "5. Do NOT use evaluative language like 'enhances', 'strengthens', 'promotes', etc.\n"
+                    "6. Every factual statement MUST include citation in format (Article NUMBER).\n"
+                    "7. If the answer is not explicitly found, respond exactly with:\n"
                     "\"The answer is not found in the retrieved constitutional articles.\"\n\n"
-                    "Do NOT provide any information without citation.\n\n"
                     f"CONSTITUTIONAL ARTICLES:\n{context}\n\n"
                     f"QUESTION:\n{query}\n\n"
-                    "Provide a legally grounded answer with proper citations."
+                    "Provide a strictly textual, citation-grounded answer."
                 )
             ),
         ]

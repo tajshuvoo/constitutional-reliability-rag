@@ -17,7 +17,7 @@ from backend.app.agent.generate_node import llm
 class FaithfulnessDecision(BaseModel):
     verdict: Literal["SUPPORTED", "UNSUPPORTED"] = Field(
         ...,
-        description="Whether the answer is fully supported by the provided context."
+        description="Whether the answer is materially supported by the context."
     )
 
 
@@ -27,17 +27,22 @@ faithfulness_parser = PydanticOutputParser(
 
 
 # -----------------------------
-# Prompt
+# Updated Prompt (Less Extreme)
 # -----------------------------
 FAITHFULNESS_PROMPT = PromptTemplate(
     template=(
-        "You are a strict constitutional fact-checker.\n\n"
-        "Determine whether the ANSWER is fully supported by the CONTEXT.\n\n"
-        "If every claim in the answer is directly supported by the context, return SUPPORTED.\n"
-        "If the answer contains any unsupported claim, interpretation, or addition, return UNSUPPORTED.\n\n"
+        "You are a constitutional fact-checker.\n\n"
+        "Determine whether the ANSWER is materially supported by the CONTEXT.\n\n"
+        "SUPPORTED means:\n"
+        "- The core claims are grounded in the context.\n"
+        "- The answer does NOT contradict the context.\n"
+        "- Minor summarization or high-level explanation is allowed.\n\n"
+        "UNSUPPORTED means:\n"
+        "- The answer adds new factual claims not present in context.\n"
+        "- The answer contradicts the context.\n"
+        "- The answer invents powers, rights, or interpretations not stated.\n\n"
         "Return strictly valid JSON.\n"
-        "Do not include markdown.\n"
-        "Do not include explanations.\n\n"
+        "No explanations.\n\n"
         "CONTEXT:\n{context}\n\n"
         "ANSWER:\n{answer}\n\n"
         "{format_instructions}"
@@ -49,9 +54,6 @@ FAITHFULNESS_PROMPT = PromptTemplate(
 )
 
 
-# -----------------------------
-# Faithfulness Function
-# -----------------------------
 def check_faithfulness(state: AgentState) -> dict:
     context = "\n\n".join(
         article.page_content for article in state.retrieved_articles
@@ -82,7 +84,6 @@ def check_faithfulness(state: AgentState) -> dict:
         except Exception as e:
             print(f"[Faithfulness Parse Failed - Attempt {attempt+1}] {e}")
 
-    # Fail-safe: mark as unsafe if parsing fails
     return {
         "faithful": False,
         "faithfulness_reason": "Parsing failed. Marked as UNSUPPORTED."

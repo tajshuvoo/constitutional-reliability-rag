@@ -41,10 +41,6 @@ class LatencyMetrics(BaseModel):
 
 
 class AgentState(BaseModel):
-    """
-    Core state object that travels across LangGraph nodes.
-    Keep minimal for v1.
-    """
 
     # ---------------------
     # Input
@@ -52,17 +48,22 @@ class AgentState(BaseModel):
     user_query: str
 
     # ---------------------
-    # Retrieval Layer
+    # Planning
+    # ---------------------
+    sub_queries: List[str] = Field(default_factory=list)
+
+    # ---------------------
+    # Retrieval
     # ---------------------
     retrieved_articles: List[RetrievedArticle] = Field(default_factory=list)
 
     # ---------------------
-    # Generation Layer
+    # Generation
     # ---------------------
     draft_answer: Optional[str] = None
 
     # ---------------------
-    # Evaluation (v1 minimal)
+    # Evaluation
     # ---------------------
     citation_valid: Optional[bool] = None
     reliability_flag: Optional[bool] = None
@@ -73,8 +74,9 @@ class AgentState(BaseModel):
     correction_triggered: bool = False
     corrected_answer: Optional[str] = None
     correction_attempts: int = 0
+
     # ---------------------
-    # Final Output
+    # Final
     # ---------------------
     final_answer: Optional[str] = None
 
@@ -84,7 +86,7 @@ class AgentState(BaseModel):
     latency: LatencyMetrics = Field(default_factory=LatencyMetrics)
 
     # ---------------------
-    # Debug / Trace
+    # Debug
     # ---------------------
     debug_info: Dict[str, Any] = Field(default_factory=dict)
 

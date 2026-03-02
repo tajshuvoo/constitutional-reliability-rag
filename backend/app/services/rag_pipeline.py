@@ -17,7 +17,7 @@ def ask(query: str) -> AgentState:
 
 
 if __name__ == "__main__":
-    state = ask("Critically analyze the impact of Article 143 on economic sovereignty.")
+    state = ask("Compare Article 10 and Article 13 regarding ownership.")
 
     print("\n===== FINAL OUTPUT =====\n")
     print("Answer:\n", state.final_answer)
