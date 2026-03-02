@@ -2,8 +2,8 @@ import streamlit as st
 import requests
 import json
 
-BACKEND_URL = "http://127.0.0.1:8000/ask/stream"
-# BACKEND_URL = "https://constitutional-reliability-rag.onrender.com/ask/stream"
+# BACKEND_URL = "http://127.0.0.1:8000/ask/stream"
+BACKEND_URL = "https://constitutional-reliability-rag.onrender.com/ask/stream"
 
 st.set_page_config(
     page_title="Constitutional Reliability RAG",
