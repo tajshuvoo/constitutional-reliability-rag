@@ -120,7 +120,34 @@ uv sync
 uv run uvicorn backend.app.main:app --reload
 uv run streamlit run frontend/app.py
 ```
+---
 
+## Environment Variables
+
+Create a `.env` file in the **root directory** of the project:
+
+```
+constitutional-reliability-rag/
+├── backend/
+├── frontend/
+├── .env   ← create here
+```
+
+Add the following variables:
+
+```env
+HUGGINGFACEHUB_API_TOKEN="*********"
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
+LANGCHAIN_API_KEY="******"
+LANGCHAIN_PROJECT="Constitutional Reliability Rag"
+```
+
+### Notes
+
+- Ensure `.env` is included in `.gitignore`
+- Do not commit API keys to version control
+- Restart the backend server after modifying environment variables
 ---
 
 ## Author
